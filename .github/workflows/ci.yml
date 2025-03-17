@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Conan
+      uses: conan-io/conan-center-index-pipelines/.github/actions/setup-conan@v1
+
+    - name: Install dependencies
+      run: conan install . --output-folder=build --build=missing
+
+    - name: Build
+      run: |
+        cmake .. -B build
+        cmake --build build
+
+    # - name: Run Tests
+    #  run: |
+    #    ctest --test-dir build
