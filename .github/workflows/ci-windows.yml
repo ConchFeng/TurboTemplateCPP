@@ -1,4 +1,4 @@
-name: CI
+name: CI-windows
 
 on:
   push:
@@ -28,6 +28,9 @@ jobs:
       run: |
        conan profile detect
        conan install . --output-folder=build --build=missing
+       
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v2
 
     - name: Build
       run: |
