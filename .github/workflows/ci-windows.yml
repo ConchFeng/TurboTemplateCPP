@@ -25,7 +25,7 @@ jobs:
     - name: Install dependencies
       run: |
        pip install conan
-       conan profile detect
+       conan profile detect --force
 
     - name: Build
       run: |
