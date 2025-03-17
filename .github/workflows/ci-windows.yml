@@ -26,6 +26,7 @@ jobs:
       run: |
        pip install conan
        conan profile detect --force
+       conan version
 
     - name: Build
       run: |
