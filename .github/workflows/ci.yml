@@ -23,7 +23,9 @@ jobs:
         version: '2.5.0'
 
     - name: Install dependencies
-      run: conan install . --output-folder=build --build=missing
+      run: |
+       conan profile detect
+       conan install . --output-folder=build --build=missing
 
     - name: Build
       run: |
