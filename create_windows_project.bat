@@ -1,6 +1,8 @@
 @echo off
 
 pip install conan
+conan version
+conan profile detect --force
 if errorlevel 1 (
     echo Failed to install conan
     exit /b 1
