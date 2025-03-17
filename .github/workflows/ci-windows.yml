@@ -25,7 +25,7 @@ jobs:
         version: '2.12.2'
 
     - name: Get CMake
-      uses: lukka/get-cmake@latest
+      uses: symbitic/install-cmake@master
        
     - name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v2
