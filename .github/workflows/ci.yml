@@ -20,7 +20,7 @@ jobs:
     - name: Set up Conan
       uses: imesense/gha-setup-conan@v0.1
       with:
-        version: '2.5.0'
+        version: '2.12.2'
 
     - name: Install dependencies
       run: |
