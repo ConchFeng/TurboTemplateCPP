@@ -23,6 +23,10 @@ jobs:
       uses: imesense/gha-setup-conan@v0.1
       with:
         version: '2.12.2'
+
+    - uses: nicledomaS/cmake_build_action@v1.4
+      with:
+        submodule_update: ON
        
     - name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v2
