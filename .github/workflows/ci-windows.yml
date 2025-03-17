@@ -23,20 +23,20 @@ jobs:
       uses: imesense/gha-setup-conan@v0.1
       with:
         version: '2.12.2'
-
-    - name: Install dependencies
-      run: |
-       conan profile detect
-       conan install . --output-folder=build --build=missing
        
     - name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v2
+      
+    - name: Install dependencies
+      run: |
+       conan profile detect
 
     - name: Build
       run: |
+        conan install . --output-folder=build --build=missing
         cd build
         cmake .. -G "Visual Studio 17 2022" -DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake  -DCMAKE_POLICY_DEFAULT_CMP0091=NEW 
-        MSBuild.exe your_project_name.sln
+        msbuild your_project_name.sln -t:rebuild 
 
     # - name: Run Tests
     #  run: |
