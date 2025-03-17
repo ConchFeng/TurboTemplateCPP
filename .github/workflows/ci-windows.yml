@@ -15,15 +15,7 @@ jobs:
         # os: [ubuntu-latest, windows-latest, macos-latest]
         os: [windows-latest]
 
-
     steps:
-    - uses: actions/checkout@v3
-
-    - name: Set up Conan
-      uses: imesense/gha-setup-conan@v0.1
-      with:
-        version: '2.12.2'
-
     - name: Get CMake
       uses: symbitic/install-cmake@master
        
@@ -32,6 +24,7 @@ jobs:
       
     - name: Install dependencies
       run: |
+       pip install conan
        conan profile detect
 
     - name: Build
